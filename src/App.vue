@@ -1,22 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+  <c-header></c-header>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import cHeader from './components/c-header.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    cHeader
   }
 }
 </script>
 
 <style>
+.clearfix::after{
+  display: block;
+  content: '';
+  clear: both;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
