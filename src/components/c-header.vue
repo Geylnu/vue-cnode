@@ -2,9 +2,10 @@
   <header>
     <nav class="inner">
       <div class="container clearfix">
-        <a href="/" class="logo">
+        <router-link :to="{name: 'root'}">
           <img src="../assets/logo.svg" alt class="logo">
-        </a>
+
+        </router-link>
         <ul class="clearfix">
           <li><a href="###">首页</a></li>
           <li><a href="###">新手入门</a></li>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import 'normalize.css'
+import 'github-markdown-css'
 import axios from 'axios'
 
 Vue.config.productionTip = false
@@ -17,7 +18,7 @@ Vue.filter('formatDate', function (dataStr) {
   if (time.getUTCFullYear() !== 1970) {
     str = `${time.getUTCFullYear() - 1970}年前`
   } else if (time.getUTCMonth() !== 0) {
-    str = `${time.getUTCMouth()}月前`
+    str = `${time.getUTCMonth()}月前`
   } else if (time.getUTCDate() !== 1) {
     str = `${time.getUTCDate()-1}天前`
   } else if (time.getUTCHours() !== 0) {
@@ -32,11 +33,11 @@ Vue.filter('formatDate', function (dataStr) {
   return str
 })
 
-Vue.filter('tagParse',function (topic) {
+Vue.filter('tagParse',function (topic,spe =true) {
     let str = ''
-    if (topic.top){
+    if (topic.top && spe){
       str = '置顶'
-    }else if (topic.good){
+    }else if (topic.good && spe){
       str = '精品'
     }else if (topic.tab === 'share'){
       str = '分享'
@@ -45,11 +46,9 @@ Vue.filter('tagParse',function (topic) {
     }else if (topic.tab === 'job'){
       str = '招聘'
     }
-
-
     return str
   })
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  
+  new Vue({
+    render: h => h(App),
+  }).$mount('#app')

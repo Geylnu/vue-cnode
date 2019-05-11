@@ -20,7 +20,7 @@
             <span class="topicList">
               <span :class="['tag',{spe: topic.good || topic.top}]">{{topic | tagParse}}</span>
               <span class="topic_title">
-                <a :href="topic.id|topicUrl">{{topic.title}}</a>
+                <router-link :to="{name:'topic',params:{id: topic.id}}">{{topic.title}}</router-link>
               </span>
             </span>
             <span class="lastReplayTime">{{topic.last_reply_at | formatDate}}</span>
@@ -39,7 +39,8 @@ export default {
   name: "c-post-list",
   data() {
     return {
-      postList: []
+      postList: [],
+      title: 'CNode：Node.js专业中文社区'
     };
   },
   methods: {
