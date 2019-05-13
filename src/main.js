@@ -4,6 +4,13 @@ import App from './App.vue'
 import 'normalize.css'
 import 'github-markdown-css'
 import axios from 'axios'
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '2px'
+})
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
