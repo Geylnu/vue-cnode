@@ -1,5 +1,6 @@
 <template>
   <div>
+  <vue-progress-bar></vue-progress-bar>
   <c-header></c-header>
   <router-view name='main'></router-view>
   </div>
@@ -12,12 +13,14 @@ import cArtical from './components/c-article'
 import router from './router/main.js'
 
 
+
 export default {
   name: 'app',
   router,
   components: {
     cHeader,cPostList,cArtical
-  }
+  },
+  
 }
 </script>
 
