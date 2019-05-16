@@ -1,6 +1,5 @@
 <template>
   <div>
-  <vue-progress-bar></vue-progress-bar>
   <c-header></c-header>
   <router-view name='main'></router-view>
   </div>
@@ -25,6 +24,24 @@ export default {
 </script>
 
 <style>
+/* md样式文件 */
+@import url("./assets/github-markdown.css");
+
+/* 面板基础样式 */
+.panel {
+  border-radius: 5px;
+  margin: 15px auto;
+  overflow: hidden;
+  font-size: 15px;
+  background: #ffffff;
+  color: #444;
+}
+
+.panel header {
+  background-color: #f6f6f6;
+  padding: 10px;
+}
+
 /* 处理内容加载出现滚动条导致平移的问题 */
 html {
   overflow-y: scroll;
@@ -44,6 +61,8 @@ body {
   overflow: hidden;
 }
 
+/* 重置盒模型 */
+
 *,*::after,*::before{
   box-sizing: border-box;
 }
@@ -53,6 +72,8 @@ body {
   content: '';
   clear: both;
 }
+
+/*重置a标签*/
 
 a{
   color: inherit;

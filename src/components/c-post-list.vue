@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="panel">
+    <div class="panel topicList">
       <header class="topicTap">
         <a href="###" class="topicTap active">全部</a>
         <a href="###" class="topicTap">精品</a>
@@ -72,25 +72,17 @@ export default {
 </script>
 
 <style scoped>
-.panel {
+
+.panel.topicList {
   width: 90%;
   max-width: 1400px;
   min-width: 960px;
   min-height: 400px;
-  border-radius: 5px;
-  margin: 15px 240px;
-  overflow: hidden;
   font-size: 15px;
   line-height: 2em;
 }
 
-header.topicTap {
-  padding: 12px 10px;
-  background: #f9f7f9;
-  margin: 0px;
-}
-
-.topicTap {
+.topicTap a{
   color: #80bd01;
   margin-right: 20px;
 }

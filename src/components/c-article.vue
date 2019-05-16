@@ -2,7 +2,7 @@
   <div class="article">
     <div class="loading" v-if="loading"></div>
     <main v-else>
-      <div class="panel self">
+      <div class="panel topic">
         <div class="header">
           <div class="top">
             <span
@@ -28,7 +28,13 @@
           <span>{{post.replies.length}} 回复</span>
         </header>
         <div class="list">
-          <c-comment :reply="item" :index="index" v-for="(item,index) of post.replies" :key="item.id" :test="post.replies"></c-comment>
+          <c-comment
+            :reply="item"
+            :index="index"
+            v-for="(item,index) of post.replies"
+            :key="item.id"
+            :test="post.replies"
+          ></c-comment>
         </div>
       </div>
     </main>
@@ -37,17 +43,17 @@
 
 <script>
 import api from "../api.js";
-import cComment from './c-comment.vue'
+import cComment from "./c-comment.vue";
 
 export default {
   name: "c-article",
   data() {
     return {
       post: {},
-      loading: true,
+      loading: true
     };
   },
-  components:{
+  components: {
     cComment
   },
   methods: {
@@ -68,26 +74,16 @@ export default {
 };
 </script>
 
-<style>
-@import url("../assets/github-markdown.css");
-
-.article .panel {
+<style scoped>
+.panel.topic,
+.panel.comment {
   width: 90%;
   max-width: 1400px;
   min-width: 960px;
-  border-radius: 5px;
-  margin: 15px 240px;
-  overflow: hidden;
-  font-size: 15px;
-  background: #ffffff;
-  color: #444;
 }
 
 .panel .header {
   padding-top: 20px;
-}
-
-.panel .header {
   padding-bottom: 5px;
 }
 
