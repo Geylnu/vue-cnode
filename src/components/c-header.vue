@@ -2,17 +2,28 @@
   <header>
     <nav class="inner">
       <div class="container clearfix">
-        <router-link :to="{name: 'root'}">
+        <router-link :to="{name: 'root'}" class="logo">
           <img src="../assets/logo.svg" alt class="logo">
-
         </router-link>
         <ul class="clearfix">
-          <li><a href="###">首页</a></li>
-          <li><a href="###">新手入门</a></li>
-          <li><a href="###">API</a></li>
-          <li><a href="###">关于</a></li>
-          <li><a href="###">登录</a></li>
-          <li><a href="###">注册</a></li>
+          <li>
+            <a href="###">首页</a>
+          </li>
+          <li>
+            <a href="###">新手入门</a>
+          </li>
+          <li>
+            <a href="###">API</a>
+          </li>
+          <li>
+            <a href="###">关于</a>
+          </li>
+          <li>
+            <a href="###">登录</a>
+          </li>
+          <li>
+            <a href="###">注册</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -31,7 +42,7 @@ header {
   background-color: #444;
 }
 
-.container{
+.container {
   min-width: 960px;
   max-width: 1440px;
   margin: auto;
@@ -39,18 +50,18 @@ header {
 
 a.logo {
   float: left;
+  line-height: 40px;
   display: block;
-  height: 34px;
-  padding: 3px 0px;
 }
 
 img.logo {
-  vertical-align: middle;
   width: 120px;
+  vertical-align: middle;
+  padding-bottom: 5px;
 }
 
 nav.inner {
-    background-color: inherit;
+  background-color: inherit;
   width: 90%;
   margin: auto;
   padding: 5px;
@@ -71,11 +82,11 @@ ul > li {
   list-style: none;
 }
 
-ul > li  a:hover {
-    color: #fff;
+ul > li a:hover {
+  color: #fff;
 }
 
-ul > li a:active{
-    color: #3f82c4;
+ul > li a:active {
+  color: #3f82c4;
 }
 </style>
