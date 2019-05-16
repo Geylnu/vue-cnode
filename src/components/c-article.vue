@@ -33,7 +33,6 @@
             :index="index"
             v-for="(item,index) of post.replies"
             :key="item.id"
-            :test="post.replies"
           ></c-comment>
         </div>
       </div>
@@ -87,18 +86,19 @@ export default {
   padding-bottom: 5px;
 }
 
+
 .panel .header,
 .panel .content.author {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.panel .content.author {
-  border-top: 1px solid rgb(229, 229, 229);
+.panel .content{
+  padding: 10px;
 }
 
-.panel .content.author .markdown-text {
-  padding: 10px;
+.panel .content.author {
+  border-top: 1px solid rgb(229, 229, 229);
 }
 
 div.top .tag {

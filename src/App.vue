@@ -1,31 +1,33 @@
 <template>
   <div>
-  <c-header></c-header>
-  <router-view name='main'></router-view>
+    <c-header></c-header>
+    <router-view name="main"></router-view>
   </div>
 </template>
 
 <script>
-import cHeader from './components/c-header.vue'
-import cPostList from './components/c-post-list'
-import cArtical from './components/c-article'
-import router from './router/main.js'
-
-
+import cHeader from "./components/c-header.vue";
+import cPostList from "./components/c-post-list";
+import cArtical from "./components/c-article";
+import router from "./router/main.js";
 
 export default {
-  name: 'app',
+  name: "app",
   router,
   components: {
-    cHeader,cPostList,cArtical
-  },
-  
-}
+    cHeader,
+    cPostList,
+    cArtical
+  }
+};
 </script>
 
 <style>
 /* md样式文件 */
 @import url("./assets/github-markdown.css");
+.panel .content.author .markdown-text {
+  padding: 10px;
+}
 
 /* 面板基础样式 */
 .panel {
@@ -63,29 +65,31 @@ body {
 
 /* 重置盒模型 */
 
-*,*::after,*::before{
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
-.clearfix::after{
+.clearfix::after {
   display: block;
-  content: '';
+  content: "";
   clear: both;
 }
 
 /*重置a标签*/
 
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
 
-body{
+body {
   background: #e4e2e4;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

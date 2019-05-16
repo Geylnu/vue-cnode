@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="cell" @mouseenter="hover.active = true" @mouseleave="hover.active = false">
-      <img class="avatar" :src="reply.author.avatar_url" alt="avatar">
-      <span class="detail clearfix">
+      <router-link :to="{name: 'userInfo',params:{loginName:reply.author.loginname}}">
+        <img class="avatar" :src="reply.author.avatar_url" alt="avatar">
+      </router-link>
+      <span class="detail">
         <span class="loginName">{{reply.author.loginname}}</span>
         <span class="replyTime">{{reply.create_at|formatDate}}</span>
         <span class="separator">•</span>
@@ -28,7 +30,7 @@ export default {
         timer: 0
       }
     };
-  },
+  }
 };
 </script>
 

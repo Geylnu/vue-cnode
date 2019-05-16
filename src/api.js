@@ -1,17 +1,18 @@
-let url = 'https://cnodejs.org/api/v1'
+let baseUrl = 'https://cnodejs.org/api/v1'
 
 let api  = {
     topics: '/topics',
     topic: '/topic/',
+    userInfo: '/user/'
 }
 
 for (const key in api) {
     if (api.hasOwnProperty(key)) {
         const nextPath = api[key];
-        api[key] = url+nextPath
+        api[key] = baseUrl+nextPath
     }
 }
 
-api.apiPath = url
+api.apiPath = baseUrl
 
 export default api
