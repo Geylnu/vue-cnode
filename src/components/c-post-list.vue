@@ -11,7 +11,14 @@
       <main>
         <div class="topics">
           <div class="cell clearfix" v-for="topic of postList" :key="topic.id">
-            <img class="avatar" :src="topic.author.avatar_url" alt :title="topic.author.loginname">
+            <router-link :to="{name:'userInfo',params:{loginName:topic.author.loginname}}">
+              <img
+                class="avatar"
+                :src="topic.author.avatar_url"
+                alt
+                :title="topic.author.loginname"
+              >
+            </router-link>
             <span class="interactivre">
               <span class="reply_count">{{topic.reply_count}}</span>
               <span class="count_seperator">/</span>
@@ -40,7 +47,7 @@ export default {
   data() {
     return {
       postList: [],
-      title: 'CNode：Node.js专业中文社区'
+      title: "CNode：Node.js专业中文社区"
     };
   },
   methods: {
@@ -88,7 +95,7 @@ header.topicTap {
   margin-right: 20px;
 }
 
-.topicTap a:hover{
+.topicTap a:hover {
   color: #005580;
 }
 
@@ -142,11 +149,11 @@ header.topicTap {
   background-color: #e5e5e5;
 }
 
-.tag.spe{
+.tag.spe {
   background: #80bd01;
   color: white;
 }
-  
+
 .topic_title {
   margin-left: 1em;
   vertical-align: middle;
@@ -159,7 +166,7 @@ header.topicTap {
   text-decoration: underline;
 }
 
-.topic_title a:visited{
+.topic_title a:visited {
   color: #888;
 }
 

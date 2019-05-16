@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import cHeader from '../components/c-header.vue'
 import cPostList from '../components/c-post-list'
 import cArtical from '../components/c-article'
+import cUserinfo from '../components/c-userInfo'
 
 Vue.use(VueRouter)
 
@@ -22,6 +22,13 @@ const router = new VueRouter({
           components:{
               main: cArtical
           }
+      },
+      {
+        name: 'userInfo',
+        path: '/user/:loginName',
+        components:{
+          main: cUserinfo
+        }
       }
     ]
   })
