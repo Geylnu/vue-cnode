@@ -57,10 +57,6 @@ export default {
 <style scoped>
 
 .panel.topicList {
-  width: 90%;
-  max-width: 1400px;
-  min-width: 960px;
-  min-height: 400px;
   font-size: 15px;
   line-height: 2em;
 }

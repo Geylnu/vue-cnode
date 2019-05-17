@@ -1,7 +1,10 @@
 <template>
   <div>
     <c-header></c-header>
-    <router-view name="main"></router-view>
+    <main class="clearfix">
+      <router-view name="slidebar"></router-view>
+      <router-view name="main"></router-view>
+    </main>
   </div>
 </template>
 
@@ -23,6 +26,13 @@ export default {
 </script>
 
 <style>
+main {
+  max-width: 1400px;
+  min-width: 960px;
+  min-height: 400px;
+  margin: auto;
+  overflow: auto;
+}
 /* md样式文件 */
 @import url("./assets/github-markdown.css");
 .panel .content.author .markdown-text {
