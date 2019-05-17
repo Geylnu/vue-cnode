@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="cell clearfix">
-      <router-link :to="{name:'userInfo',params:{loginName:topic.author.loginname}}">
+      <router-link :to="{name:'userInfo',params:{loginName:topic.author.loginname}}" class="avatar">
         <img class="avatar" :src="topic.author.avatar_url" alt :title="topic.author.loginname">
       </router-link>
       <span class="replayAndVisited" v-if="topic.visit_count!== undefined">
@@ -9,6 +9,7 @@
         <span class="count_seperator">/</span>
         <span class="visites_count">{{topic.visit_count}}</span>
       </span>
+      <span class="lastReplayTime">{{topic.last_reply_at | formatDate}}</span>
       <span class="topicList">
         <span
           v-if="topic.tab !==undefined"
@@ -21,7 +22,6 @@
           >{{topic.title}}</router-link>
         </span>
       </span>
-      <span class="lastReplayTime">{{topic.last_reply_at | formatDate}}</span>
     </div>
   </div>
 </template>
@@ -47,9 +47,12 @@ export default {
 }
 
 .avatar {
+  float: left;
+}
+
+.avatar {
   width: 30px;
   height: 30px;
-  float: left;
 }
 
 .replayAndVisited {
@@ -69,12 +72,22 @@ export default {
 .count_seperator {
   font-size: 10px;
 }
+
+.topicList{
+  white-space: nowrap;
+  width: 80%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .tag {
   font-size: 12px;
   color: #999;
   padding: 2px 4px;
   border-radius: 3px;
   background-color: #e5e5e5;
+  white-space: nowrap;
 }
 
 .tag.spe {
@@ -101,7 +114,6 @@ export default {
 .lastReplayTime {
   text-align: right;
   min-width: 50px;
-  white-space: nowrap;
   float: right;
   color: #778087;
   font-size: 12px;
