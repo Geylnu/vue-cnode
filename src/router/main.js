@@ -20,7 +20,7 @@ const router = new VueRouter({
     },
     {
       name: 'topic',
-      path: '/topic/:id',
+      path: '/topic/:loginName/:id',
       components: {
         main: cArtical,
         slidebar: cSlidebar,

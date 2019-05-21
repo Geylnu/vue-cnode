@@ -1,16 +1,11 @@
 <template>
-  <div class="userInfo">
-    <div class="panel profile">
-      <header>主页</header>
-      <div class="content"></div>
-    </div>
+  <main class="userInfo">
     <div class="panel recentTopics">
       <header>最近创建的话题</header>
       <div class="list">
         <c-topic-cell v-for="topic of topics()" :key="topic.id" :topic="topic"></c-topic-cell>
         <div class="moreTopic" v-if="!showAll">
-          <span @click="showAll = true">
-
+          <span @click="showAll = true" v-if="needShowMore">
           查看更多»
           </span>
         </div>
@@ -22,7 +17,7 @@
         <c-topic-cell v-for="topic of info.recent_replies" :key="topic.id" :topic="topic"></c-topic-cell>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -35,36 +30,25 @@ export default {
     return {
       info: {},
       showAll: false,
+      needShowMore: false,
     };
   },
   components: {
     cTopicCell
   },
   methods: {
-    async getData() {
-      let { loginName } = this.$route.params;
-      let {
-        data: { data, success }
-      } = await this.$http.get(api.userInfo + loginName);
-      if (success) {
-        this.info = data;
-      }
-    },
     topics(limitNum = 5) {
       let replyArray = this.info.recent_topics || [];
-      if (replyArray.length > limitNum && this.showAll === false) {
+      let needShowMore = replyArray.length > limitNum
+      this.needShowMore = needShowMore
+      if (needShowMore && this.showAll === false) {
         replyArray = replyArray.slice(0, limitNum);
       }
       return replyArray;
     }
   },
-  watch: {
-    $route: function() {
-      this.getData();
-    }
-  },
-  beforeMount() {
-    this.getData();
+  created() {
+    this.$eventBus.$on('infoChanged',info=>{this.info =info})
   }
 };
 </script>

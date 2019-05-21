@@ -7,6 +7,7 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
+Vue.prototype.$eventBus = new Vue()
 
 /**
  * 严谨版本应该是现在的和之前的相减

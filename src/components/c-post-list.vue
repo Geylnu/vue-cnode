@@ -43,7 +43,7 @@ export default {
       }
     }
   },
-  beforeMount() {
+  created() {
     this.getData();
   },
   filters: {

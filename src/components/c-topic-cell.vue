@@ -18,7 +18,7 @@
         <span class="topic_title">
           <router-link
             :title="topic.title"
-            :to="{name:'topic',params:{id: topic.id}}"
+            :to="{name:'topic',params:{id: topic.id,loginName:topic.author.loginname}}"
           >{{topic.title}}</router-link>
         </span>
       </span>

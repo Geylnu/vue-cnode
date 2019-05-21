@@ -2,7 +2,11 @@
   <div>
     <c-header></c-header>
     <main class="clearfix">
-      <router-view name="slidebar"></router-view>
+      <div class="slidebar">
+        <div class="container">
+          <router-view name="slidebar"></router-view>
+        </div>
+      </div>
       <router-view name="main"></router-view>
     </main>
   </div>
@@ -26,6 +30,16 @@ export default {
 </script>
 
 <style>
+/* 侧边栏样式 */
+.slidebar {
+  float: right;
+  margin-left: 15px;
+}
+
+.slidebar .container {
+  width: 290px;
+}
+/* 中心面板样式 */
 main {
   max-width: 1400px;
   min-width: 960px;
