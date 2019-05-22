@@ -13,6 +13,6 @@ for (const key in api) {
     }
 }
 
-api.apiPath = baseUrl
+api.baseUrl = baseUrl
 
 export default api
