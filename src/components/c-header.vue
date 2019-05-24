@@ -18,12 +18,7 @@
           <li>
             <a href="###">关于</a>
           </li>
-          <li>
-            <a href="###">登录</a>
-          </li>
-          <li>
-            <a href="###">注册</a>
-          </li>
+          <li v-if="isLogin" @click="loginout()" class="loginout"><a >退出</a></li>
         </ul>
       </div>
     </nav>
@@ -32,7 +27,23 @@
 
 <script>
 export default {
-  name: "c-header"
+  name: "c-header",
+  data(){
+    return {
+      isLogin: false
+    }
+  },
+  methods:{
+    loginout(){
+      this.$eventBus.$emit('loginout')
+      this.isLogin = false
+    }
+  },
+  created(){
+    this.$eventBus.$on('login',()=>{
+      this.isLogin = true
+    })
+  }
 };
 </script>
 
@@ -46,6 +57,10 @@ header {
   min-width: 960px;
   max-width: 1440px;
   margin: auto;
+}
+
+li.loginout{
+  cursor: pointer;
 }
 
 a.logo {

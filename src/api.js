@@ -3,7 +3,9 @@ let baseUrl = 'https://cnodejs.org/api/v1'
 let api  = {
     topics: '/topics',
     topic: '/topic/',
-    userInfo: '/user/'
+    userInfo: '/user/',
+    login: '/accesstoken',
+    collected: '/topic_collect/'
 }
 
 for (const key in api) {

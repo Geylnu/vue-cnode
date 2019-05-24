@@ -5,6 +5,7 @@ import cPostList from '../components/c-post-list'
 import cArtical from '../components/c-article'
 import cUserinfo from '../components/c-userInfo'
 import cSlidebar from '../components/c-slidebar'
+import cLogin from '../components/c-login.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,7 @@ const router = new VueRouter({
       path: '/',
       components: {
         main: cPostList,
-        slidebar: cSlidebar,
+        slidebar: cLogin,
       }
     },
     {
