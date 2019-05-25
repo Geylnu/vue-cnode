@@ -213,6 +213,7 @@
 
 .markdown-text img {
   border-style: none;
+  display: none
 }
 
 .markdown-text code,
