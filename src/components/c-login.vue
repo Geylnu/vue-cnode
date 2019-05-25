@@ -33,6 +33,7 @@
       <div class="panel">
         <header>最近收藏的主题</header>
         <div class="list">
+          <div class="cell" v-if="topics().length ===0">暂无收藏</div>
           <div class="cell" v-for="topic of topics()" :key="topic.id">
             <router-link
               :to="{name:'topic',params:{id: topic.id, loginName: topic.author.loginname}}"

@@ -25,7 +25,7 @@
       </div>
       <div class="panel comment">
         <header>
-          <span>{{post.replies.length}} 回复</span>
+          <span>{{post.replies.length|formatReplaies}}回复</span>
         </header>
         <div class="list">
           <c-comment
@@ -54,6 +54,15 @@ export default {
   },
   components: {
     cComment
+  },
+  filters:{
+    formatReplaies(value){
+      let str = value + ' '
+      if (value ===0){
+        str = '暂无'
+      }
+      return str
+    }
   },
   methods: {
     async getTopicInfo() {

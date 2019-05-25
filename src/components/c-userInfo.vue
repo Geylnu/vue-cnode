@@ -3,9 +3,10 @@
     <div class="panel recentTopics">
       <header>最近创建的话题</header>
       <div class="list">
+        <div v-if="topics().length === 0" class="cell">还没有创建过什么话题</div>
         <c-topic-cell v-for="topic of topics()" :key="topic.id" :topic="topic"></c-topic-cell>
-        <div class="moreTopic" v-if="!showAll">
-          <span @click="showAll = true" v-if="needShowMore">
+        <div class="moreTopic" v-if="!showAll && needShowMore">
+          <span @click="showAll = true">
           查看更多»
           </span>
         </div>
@@ -14,6 +15,7 @@
     <div class="panel recentReplies" v-if="!showAll">
       <header>最近参与的话题</header>
       <div class="list">
+      <div class="cell" v-if="info.recent_replies.length === 0">还没有参与什么话题</div>
         <c-topic-cell v-for="topic of info.recent_replies" :key="topic.id" :topic="topic"></c-topic-cell>
       </div>
     </div>
@@ -61,6 +63,10 @@ export default {
 
 .moreTopic span{
   cursor: pointer
+}
+
+.cell{
+  padding: 10px;
 }
 </style>
 
