@@ -5,7 +5,9 @@ let api  = {
     topic: '/topic/',
     userInfo: '/user/',
     login: '/accesstoken',
-    collected: '/topic_collect/'
+    collected: '/topic_collect/',
+    collectTopic: '/topic_collect/collect',
+    cancelCollect: '/topic_collect/de_collect'
 }
 
 for (const key in api) {

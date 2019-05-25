@@ -20,7 +20,11 @@
               <span>{{post|tagParse(false)}}</span>
             </li>
           </ul>
-          <button class="collect">收藏</button>
+          <button
+            :class="['collect',{active: post.is_collect}]"
+            v-if="accesstoken!==''"
+            @click="postCollect()"
+          >{{post.is_collect?'取消收藏':'收藏'}}</button>
         </div>
         <div class="content author" v-html="post.content"></div>
       </div>
@@ -44,7 +48,7 @@
 <script>
 import api from "../api.js";
 import cComment from "./c-comment.vue";
-import token from './token'
+import token from "./token";
 
 export default {
   name: "c-article",
@@ -58,26 +62,26 @@ export default {
   components: {
     cComment
   },
-  filters:{
-    formatReplaies(value){
-      let str = value + ' '
-      if (value ===0){
-        str = '暂无'
+  filters: {
+    formatReplaies(value) {
+      let str = value + " ";
+      if (value === 0) {
+        str = "暂无";
       }
-      return str
+      return str;
     }
   },
   methods: {
     async getTopicInfo() {
       let id = this.$route.params.id;
       let config = {
-        method: 'get',
+        method: "get",
         url: api.topic + id
-      }
-      if (this.accesstoken){
+      };
+      if (this.accesstoken) {
         config.params = {
           accesstoken: this.accesstoken
-        }
+        };
       }
       let {
         data: { data, success }
@@ -85,6 +89,24 @@ export default {
       if (success) {
         this.post = data;
         this.loading = false;
+      }
+    },
+    async postCollect() {
+      let id = this.$route.params.id;
+      let config = {
+        method: "post",
+        url: this.post.is_collect ? api.cancelCollect : api.collectTopic,
+        data: {
+          topic_id: this.$route.params.id,
+          accesstoken: this.accesstoken
+        }
+      };
+      let {
+        data: { success }
+      } = await this.$http(config);
+
+      if (success) {
+        this.post.is_collect = !this.post.is_collect;
       }
     }
   },
@@ -107,14 +129,13 @@ export default {
   padding-bottom: 5px;
 }
 
-
 .panel .header,
 .panel .content.author {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.panel .content{
+.panel .content {
   padding: 10px;
 }
 
@@ -145,9 +166,39 @@ div.top h1 {
   font-size: 22px;
 }
 
-button.collect{
-  float: right;
+button.collect {
+    display: inline-block;
+    float: right;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin: 0;
+    font-size: 14px;
+    transition: all .2s ease-in-out;
+    letter-spacing: 2px;
+    box-shadow: none;
+    line-height: 2em;
+    vertical-align: middle;
+    color: #fff;
+    cursor: pointer;
+    background: #80bd01;
+    transform: 0.3s all;
 }
+
+button.collect:hover{
+  background: #6ba44e
+}
+
+button.collect.active{
+  background: #e5e5e5;
+  color: black;
+}
+
+button.collect.active:hover{
+  background: #909090;
+  color: white;
+}
+
 
 ul.detail {
   padding: 0px;
