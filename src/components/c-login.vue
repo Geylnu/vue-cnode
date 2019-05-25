@@ -48,6 +48,7 @@
 
 <script>
 import api from "../api.js";
+import token from './token'
 
 const statusCode = {
   NORMAL: "NORMAL",
@@ -68,11 +69,11 @@ const statusMsg = {
 
 export default {
   name: "cLogin",
+  mixins:[token],
   data() {
     return {
       statusCode,
       status: statusCode.NORMAL,
-      accesstoken: "",
       loginName: "",
       msg: "",
       timerId: 0,
@@ -97,16 +98,11 @@ export default {
   },
   methods: {
     async reuseToken() {
-      let token = sessionStorage.getItem("accesstoken");
-      if (token !== null) {
-        this.accesstoken = token;
+      if (this.accesstoken !== '') {
         this.status = this.statusCode.REUSETOKEN;
         await this.postToken();
         await this.getCollectTopic();
       }
-    },
-    saveToken() {
-      sessionStorage.setItem("accesstoken", this.accesstoken);
     },
     topics(limitNum = 5) {
       let topicArray = this.collectedTopic || [];
@@ -156,8 +152,7 @@ export default {
       }
     },
     loginout() {
-      sessionStorage.removeItem("accesstoken");
-      this.accesstoken = "";
+      this.clearToken()
       this.status = this.statusCode.NORMAL;
     },
     async postToken() {

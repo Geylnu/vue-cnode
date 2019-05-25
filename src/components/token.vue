@@ -8,10 +8,11 @@ export default {
   methods: {
     saveToken() {
       sessionStorage.setItem("accesstoken", this.accesstoken);
+    },
+    clearToken() {
+      this.accesstoken = ''
+      sessionStorage.removeItem("accesstoken");
     }
-  },
-  clearToken() {
-    sessionStorage.removeItem("accesstoken");
   },
   created() {
     let token = sessionStorage.getItem("accesstoken");
