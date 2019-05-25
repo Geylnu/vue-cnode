@@ -3,7 +3,7 @@
     <div class="loading" v-if="loading"></div>
     <main v-else>
       <div class="panel topic">
-        <div class="header">
+        <div class="header clearfix">
           <div class="top">
             <span
               v-if="post.good||post.top"
@@ -20,6 +20,7 @@
               <span>{{post|tagParse(false)}}</span>
             </li>
           </ul>
+          <button class="collect">收藏</button>
         </div>
         <div class="content author" v-html="post.content"></div>
       </div>
@@ -43,9 +44,11 @@
 <script>
 import api from "../api.js";
 import cComment from "./c-comment.vue";
+import token from './token'
 
 export default {
   name: "c-article",
+  mixins: [token],
   data() {
     return {
       post: {},
@@ -67,9 +70,18 @@ export default {
   methods: {
     async getTopicInfo() {
       let id = this.$route.params.id;
+      let config = {
+        method: 'get',
+        url: api.topic + id
+      }
+      if (this.accesstoken){
+        config.params = {
+          accesstoken: this.accesstoken
+        }
+      }
       let {
         data: { data, success }
-      } = await this.$http.get(api.topic + id);
+      } = await this.$http(config);
       if (success) {
         this.post = data;
         this.loading = false;
@@ -133,8 +145,13 @@ div.top h1 {
   font-size: 22px;
 }
 
+button.collect{
+  float: right;
+}
+
 ul.detail {
   padding: 0px;
+  float: left;
 }
 
 ul.detail li {
