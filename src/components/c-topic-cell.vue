@@ -12,7 +12,6 @@
       <span class="lastReplayTime">{{topic.last_reply_at | formatDate}}</span>
       <span class="topicList">
         <span
-          v-if="topic.tab !==undefined"
           :class="['tag',{spe: topic.good || topic.top}]"
         >{{topic | tagParse}}</span>
         <span class="topic_title">

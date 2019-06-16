@@ -2,15 +2,16 @@
   <div class="content">
     <div class="panel topicList">
       <header class="topicTap">
-        <a href="###" class="topicTap active">全部</a>
-        <a href="###" class="topicTap">精品</a>
-        <a href="###" class="topicTap">分享</a>
-        <a href="###" class="topicTap">问答</a>
-        <a href="###" class="topicTap">招聘</a>
+        <router-link
+          v-for="tab of tabs"
+          :class="['topicTap',{active: $route.params.tab === tab.key}]"
+          :key="tab.key"
+          :to="{name:'root',params:{tab:tab.key}}"
+        >{{tab.text}}</router-link>
       </header>
       <main>
         <div class="topics">
-          <c-topicCell  v-for="topic of postList" :key="topic.id" :topic="topic"></c-topicCell>
+          <c-topicCell v-for="topic of postList" :key="topic.id" :topic="topic"></c-topicCell>
         </div>
         <div class="pagination"></div>
       </main>
@@ -20,27 +21,41 @@
 
 <script>
 import api from "../api.js";
-import cTopicCell from "./c-topic-cell"
+import cTopicCell from "./c-topic-cell";
 
 export default {
   name: "c-post-list",
   data() {
     return {
+      tabs: [
+        { key: "all", text: "全部" },
+        { key: "good", text: "精品" },
+        { key: "share", text: "分享" },
+        { key: "ask", text: "问答" },
+        { key: "job", text: "招聘" }
+      ],
       postList: [],
       title: "CNode：Node.js专业中文社区"
     };
   },
-  components:{
+  components: {
     cTopicCell
   },
   methods: {
     async getData() {
       let {
         data: { data, success }
-      } = await this.$http.get(api.topics);
+      } = await this.$http.get(api.topics, {
+        params: { tab: this.$route.params.tab }
+      });
       if (success) {
         this.postList = data;
       }
+    }
+  },
+  watch: {
+    $route() {
+      this.getData();
     }
   },
   created() {
@@ -55,13 +70,12 @@ export default {
 </script>
 
 <style scoped>
-
 .panel.topicList {
   font-size: 15px;
   line-height: 2em;
 }
 
-.topicTap a{
+.topicTap a {
   color: #80bd01;
   margin-right: 20px;
 }

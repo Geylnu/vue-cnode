@@ -11,9 +11,10 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
+    { path: '/', redirect: '/all' },
     {
       name: 'root',
-      path: '/',
+      path: '/:tab',
       components: {
         main: cPostList,
         slidebar: cLogin,
