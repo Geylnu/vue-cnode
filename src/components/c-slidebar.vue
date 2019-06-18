@@ -30,7 +30,7 @@
       <header>作者其它话题</header>
       <div class="list">
         <div class="cell" v-for="topic of topics()" :key="topic.id">
-          <router-link :to="{name:'topic',id:topic.id}" :title="topic.title">{{topic.title}}</router-link>
+          <router-link :to="{name:'topic',params:{id:topic.id}}" :title="topic.title">{{topic.title}}</router-link>
         </div>
       </div>
     </div>

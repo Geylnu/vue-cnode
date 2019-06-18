@@ -110,6 +110,11 @@ export default {
       }
     }
   },
+  watch:{
+    $route: function() {
+      this.getTopicInfo()
+    },  
+  },
   created() {
     this.getTopicInfo();
   }
@@ -167,7 +172,6 @@ div.top h1 {
 }
 
 button.collect {
-    display: inline-block;
     float: right;
     border: none;
     border-radius: 3px;

@@ -15,7 +15,7 @@
     <div class="panel recentReplies" v-if="!showAll">
       <header>最近参与的话题</header>
       <div class="list">
-      <div class="cell" v-if="info.recent_replies.length === 0">还没有参与什么话题</div>
+      <div class="cell" v-if="info.recent_replies && info.recent_replies.length === 0">还没有参与什么话题</div>
         <c-topic-cell v-for="topic of info.recent_replies" :key="topic.id" :topic="topic"></c-topic-cell>
       </div>
     </div>

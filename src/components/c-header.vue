@@ -2,7 +2,7 @@
   <header>
     <nav class="inner">
       <div class="container clearfix">
-        <router-link :to="{name: 'root'}" class="logo">
+        <router-link :to="{name: 'root',params:{tab:'all'}}" class="logo">
           <img src="../assets/logo.svg" alt class="logo">
         </router-link>
         <ul class="clearfix">
