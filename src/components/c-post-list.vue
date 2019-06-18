@@ -13,7 +13,7 @@
         <div class="topics">
           <c-topicCell v-for="topic of postList" :key="topic.id" :topic="topic"></c-topicCell>
         </div>
-        <div class="loadMore" v-show="!loadMore">已经看完{{page}}页了，再次下滑加载更多</div>
+        <div class="loadMore" v-show="!loadMore && tabs.length !==0">已经看完{{page}}页了，再次下滑加载更多</div>
         <div class="loadMore" v-show="loadMore">加载中。。。</div>
       </main>
     </div>
@@ -48,7 +48,7 @@ export default {
     cTopicCell
   },
   methods: {
-    async getData() {
+    async getData(noSwitch = true) {
       let {
         data: { data, success }
       } = await this.$http.get(api.topics, {
@@ -60,18 +60,18 @@ export default {
       });
       if (success) {
         this.postList =
-          this.postList.length !== 0 ? this.postList.concat(data) : data;
+          this.postList.length !== 0 && noSwitch ? this.postList.concat(data) : data;
       }
       return success
     }
   },
   watch: {
     $route() {
-      this.getData();
+      this.getData(false);
     }
   },
   created() {
-    this.getData();
+    this.getData(false);
   },
   mounted() {
     this.scrollLoad = (e) => {
