@@ -110,10 +110,10 @@ export default {
       }
     }
   },
-  watch:{
+  watch: {
     $route: function() {
-      this.getTopicInfo()
-    },  
+      this.getTopicInfo();
+    }
   },
   created() {
     this.getTopicInfo();
@@ -172,37 +172,36 @@ div.top h1 {
 }
 
 button.collect {
-    float: right;
-    border: none;
-    border-radius: 3px;
-    padding: 3px 10px;
-    margin: 0;
-    font-size: 14px;
-    transition: all .2s ease-in-out;
-    letter-spacing: 2px;
-    box-shadow: none;
-    line-height: 2em;
-    vertical-align: middle;
-    color: #fff;
-    cursor: pointer;
-    background: #80bd01;
-    transform: 0.3s all;
+  float: right;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin: 0;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 2px;
+  box-shadow: none;
+  line-height: 2em;
+  vertical-align: middle;
+  color: #fff;
+  cursor: pointer;
+  background: #80bd01;
+  transform: 0.3s all;
 }
 
-button.collect:hover{
-  background: #6ba44e
+button.collect:hover {
+  background: #6ba44e;
 }
 
-button.collect.active{
+button.collect.active {
   background: #e5e5e5;
   color: black;
 }
 
-button.collect.active:hover{
+button.collect.active:hover {
   background: #909090;
   color: white;
 }
-
 
 ul.detail {
   padding: 0px;
@@ -229,5 +228,13 @@ ul.detail li::before {
 
 .comment header span {
   line-height: 20px;
+}
+
+@media (max-width: 961px) {
+  .panel.topic,
+  .panel.comment {
+    width: 100%;
+    min-width: 0px;
+  }
 }
 </style>

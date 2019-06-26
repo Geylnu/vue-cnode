@@ -71,6 +71,8 @@ export default {
   name: "cLogin",
   mixins:[token],
   data() {
+    let vh = window.innerHeight
+    let isMobile = vh <= 960
     return {
       statusCode,
       status: statusCode.NORMAL,
@@ -78,14 +80,15 @@ export default {
       msg: "",
       timerId: 0,
       info: {},
-      collectedTopic: []
+      collectedTopic: [],
+      isMobile
     };
   },
   watch: {
     status(newStatus, oldStatus) {
       this.msg = statusMsg[newStatus];
       if (newStatus === this.statusCode.SUCCESS) {
-        this.$eventBus.$emit("login");
+        this.$eventBus.$emit("login",this.info);
       }
     }
   },
@@ -147,7 +150,11 @@ export default {
         if (success) {
           sessionStorage.setItem("accesstoken", this.accesstoken);
           this.saveToken();
-          this.getCollectTopic();
+          if(this.isMobile && this.$route.name !== 'root'){
+            this.$router.push({name:'root',params:{tab:'all'}})
+          }else{
+            this.getCollectTopic();
+          }
         }
       }
     },
@@ -252,5 +259,18 @@ form .msg {
 
 .cell a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 961px){
+  .login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  header,form{
+    width: 100%;
+  }
 }
 </style>

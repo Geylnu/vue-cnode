@@ -43,9 +43,20 @@ export default {
 main {
   max-width: 1400px;
   min-width: 960px;
-  min-height: 400px;
+  min-height: 100vh;
   margin: auto;
   overflow: auto;
+}
+
+@media (max-width: 961px) {
+  main {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .slidebar{
+    display: none;
+  }
 }
 /* md样式文件 */
 @import url("./assets/github-markdown.css");
@@ -61,6 +72,12 @@ main {
   font-size: 15px;
   background: #ffffff;
   color: #444;
+}
+
+@media (max-width: 961px){
+  .panel{
+    margin: auto;
+  }
 }
 
 .panel header {
@@ -110,14 +127,5 @@ a {
 
 body {
   background: #e4e2e4;
-}
-
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

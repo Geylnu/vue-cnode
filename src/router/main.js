@@ -21,6 +21,13 @@ const router = new VueRouter({
       }
     },
     {
+      name: 'login',
+      path: '/login/user',
+      components: {
+        main: cLogin,
+      }
+    },
+    {
       name: 'topic',
       path: '/topic/:loginName/:id',
       components: {
