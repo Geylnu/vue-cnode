@@ -71,7 +71,7 @@ export default {
   name: "cLogin",
   mixins:[token],
   data() {
-    let vh = window.innerHeight
+    let vh = window.innerWidth
     let isMobile = vh <= 960
     return {
       statusCode,
