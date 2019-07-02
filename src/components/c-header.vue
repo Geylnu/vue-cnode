@@ -4,11 +4,11 @@
     <div class="container">
       <div class="m-wrapper">
         <router-link :to="{name: 'root',params:{tab:'all'}}" class="logo">
-          <img src="../assets/logo.svg" alt class="logo">
+          <img src="../assets/logo.svg" alt class="logo" />
         </router-link>
         <menu>
           <router-link v-if="isLogin" :to="{name:'userInfo',params:{loginName:info.loginname}}">
-            <img class="avatar" :src="info.avatar_url">
+            <img class="avatar" :src="info.avatar_url" />
           </router-link>
           <router-link v-else :to="{name:'login'}" @click.native="ulActive=false">登录</router-link>
           <svg
@@ -24,7 +24,7 @@
             <path
               d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
               p-id="2238"
-            ></path>
+            />
           </svg>
         </menu>
       </div>
@@ -50,11 +50,11 @@
 </template>
 
 <script>
-import token from './token'
+import token from "./token";
 
 export default {
   name: "c-header",
-  mixins:[token],
+  mixins: [token],
   data() {
     return {
       info: {},
@@ -66,17 +66,29 @@ export default {
     loginout() {
       this.$eventBus.$emit("loginout");
       this.isLogin = false;
-      this.info = {}
-      this.ulActive = false
+      this.info = {};
+      this.ulActive = false;
+    },
+    handScroll() {
+      let scrollTop = window.scrollY;
+      if (this.ulActive) {
+        this.ulActive = !(scrollTop > 5);
+      }
     }
   },
   created() {
-    this.isLogin = !!this.accesstoken
+    this.isLogin = !!this.accesstoken;
 
     this.$eventBus.$on("login", info => {
       this.isLogin = true;
       this.info = info;
     });
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handScroll);
   }
 };
 </script>
@@ -201,7 +213,7 @@ ul > li a:active {
     transition: all 0.3s;
   }
 
-  menu img.avatar{
+  menu img.avatar {
     width: 30px;
     height: 30px;
     display: block;
