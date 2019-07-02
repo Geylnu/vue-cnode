@@ -1,5 +1,6 @@
 <template>
   <div>
+    <c-return-top></c-return-top>
     <c-header></c-header>
     <main class="clearfix">
       <div class="slidebar">
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import cReturnTop from "./components/c-return-top"
 import cHeader from "./components/c-header.vue";
 import cPostList from "./components/c-post-list";
 import cArtical from "./components/c-article";
@@ -22,6 +24,7 @@ export default {
   name: "app",
   router,
   components: {
+    cReturnTop,
     cHeader,
     cPostList,
     cArtical
@@ -102,6 +105,17 @@ html {
 body {
   width: 100vw;
   overflow: hidden;
+}
+
+@media (max-width: 961px) {
+:root body {
+  position: static;
+}
+
+body {
+  width: auto;
+  overflow: hidden;
+}
 }
 
 /* 重置盒模型 */
