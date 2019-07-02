@@ -10,7 +10,7 @@
           <router-link v-if="isLogin" :to="{name:'userInfo',params:{loginName:info.loginname}}">
             <img class="avatar" :src="info.avatar_url">
           </router-link>
-          <router-link v-else :to="{name:'login'}">登录</router-link>
+          <router-link v-else :to="{name:'login'}" @click.native="ulActive=false">登录</router-link>
           <svg
             @click="ulActive=!ulActive"
             :class="{active:ulActive}"
