@@ -92,7 +92,6 @@ export default {
       }
     },
     async postCollect() {
-      let id = this.$route.params.id;
       let config = {
         method: "post",
         url: this.post.is_collect ? api.cancelCollect : api.collectTopic,
