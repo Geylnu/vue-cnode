@@ -13,11 +13,9 @@
         <div class="topics">
           <c-topicCell v-for="topic of postList" :key="topic.id" :topic="topic"></c-topicCell>
         </div>
-        <div class="loadMore" v-show="!loadMore && postList.length !==0">已经看完{{page}}页了，再次下滑加载更多</div>
         <div class="loadMore" v-show="loadMore">加载中。。。</div>
       </main>
     </div>
-    <div class="loadmore-block" v-if="readyLoadMore"></div>
   </div>
 </template>
 
@@ -40,8 +38,7 @@ export default {
       limit: 40,
       postList: [],
       title: "CNode：Node.js专业中文社区",
-      readyLoadMore: false,
-      loadMore: false
+      loadMore: false,
     };
   },
   components: {
@@ -65,6 +62,18 @@ export default {
             : data;
       }
       return success;
+    },
+    handleScroll() {
+      let top = this.$el.getBoundingClientRect().bottom
+      let vh = window.innerHeight || document.documentElement.clientHeight;
+
+      if (top -vh <20 && !this.loadMore){
+        this.loadMore = true
+        this.page++
+        this.getData().then((success)=>{
+          this.loadMore = !success
+        })
+      }
     }
   },
   watch: {
@@ -76,45 +85,15 @@ export default {
     this.getData(false);
   },
   mounted() {
-    this.scrollLoad = e => {
-      let sTop = document.documentElement.scrollTop;
-      let vh = window.innerHeight || document.documentElement.clientHeight;
-      let dh = document.body.clientHeight;
-      if (dh - sTop - vh === 0) {
-        if (!this.readyLoadMore) {
-          setTimeout(() => {
-            this.readyLoadMore = true;
-          }, 400);
-        }
-
-        if (this.readyLoadMore === true && !this.loadMore) {
-          this.page += 1;
-          this.loadMore = true;
-          this.getData().then(success => {
-            if (success) {
-              this.loadMore = false;
-              this.readyLoadMore = false;
-            } else {
-              this.loadMoreSuccess = false;
-            }
-          });
-        }
-      }
-    };
-    document.addEventListener("scroll", this.scrollLoad);
+    document.addEventListener('scroll',this.handleScroll)
   },
   destroyed() {
-    document.removeEventListener("scroll", this.scrollLoad);
+    document.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
 
 <style scoped>
-.loadmore-block {
-  height: 1em;
-  background-color: transparent;
-  visibility: hidden;
-}
 .panel.topicList {
   font-size: 15px;
   line-height: 2em;
