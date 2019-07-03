@@ -1,5 +1,5 @@
 # cnode
-使用vue构建的cnode官网
+使用vue构建的cnode官网，有更好的移动端体验~
 
 ## 支持的功能
 * - [ ] 全局顶部加载进度条显示
@@ -22,30 +22,8 @@
     * - [x] 收藏功能
     * - [ ] ~~点赞功能~~ 相关接口下线
 
-## Project setup
+## 本地预览
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
