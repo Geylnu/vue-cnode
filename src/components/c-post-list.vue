@@ -13,7 +13,13 @@
         <div class="topics">
           <c-topicCell v-for="topic of postList" :key="topic.id" :topic="topic"></c-topicCell>
         </div>
-        <div class="loadMore" v-show="loadMore">加载中。。。</div>
+        <div class="loadMore" v-show="loadMore">
+          <div class="dots">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </main>
     </div>
   </div>
@@ -38,7 +44,7 @@ export default {
       limit: 40,
       postList: [],
       title: "CNode：Node.js专业中文社区",
-      loadMore: false,
+      loadMore: false
     };
   },
   components: {
@@ -64,15 +70,15 @@ export default {
       return success;
     },
     handleScroll() {
-      let top = this.$el.getBoundingClientRect().bottom
+      let top = this.$el.getBoundingClientRect().bottom;
       let vh = window.innerHeight || document.documentElement.clientHeight;
 
-      if (top -vh <20 && !this.loadMore){
-        this.loadMore = true
-        this.page++
-        this.getData().then((success)=>{
-          this.loadMore = !success
-        })
+      if (top - vh < 20 && !this.loadMore) {
+        this.loadMore = true;
+        this.page++;
+        this.getData().then(success => {
+          this.loadMore = !success;
+        });
       }
     }
   },
@@ -85,7 +91,7 @@ export default {
     this.getData(false);
   },
   mounted() {
-    document.addEventListener('scroll',this.handleScroll)
+    document.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
     document.removeEventListener("scroll", this.handleScroll);
@@ -122,8 +128,46 @@ a.topicTap.active {
 }
 
 .loadMore {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
 }
+
+.dots {
+  width: 4em;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots div {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background-color: #80bd01;
+  animation: fade 0.8s ease-in-out alternate infinite;
+}
+
+.dots div:nth-of-type(1) {
+  animation-delay: -0.4s;
+}
+
+.dots div:nth-of-type(2) {
+  animation-delay: -0.2s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
 @media (max-width: 961px) {
   .topicTap a.topicTap {
     color: #80bd01;
