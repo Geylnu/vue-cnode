@@ -124,7 +124,7 @@ export default {
 <style scoped>
 .panel.topic,
 .panel.comment {
-  width: 90%;
+  width: 100%;
   max-width: 1400px;
   min-width: 960px;
 }
