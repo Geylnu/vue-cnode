@@ -196,6 +196,7 @@ ul > li a:active {
   menu {
     display: flex;
     align-content: center;
+    height: 40px;
   }
   menu a {
     display: flex;
