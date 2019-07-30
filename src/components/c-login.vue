@@ -267,6 +267,8 @@ form .msg {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top:30vh;
+    width: 90%;
   }
 
   header,form{
