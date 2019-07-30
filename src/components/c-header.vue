@@ -33,13 +33,13 @@
           <router-link :to="{name: 'root',params:{tab:'all'}}">首页</router-link>
         </li>
         <li>
-          <a href="###">新手入门</a>
+          <a href="https://cnodejs.org/getstart">新手入门</a>
         </li>
         <li>
-          <a href="###">API</a>
+          <a href="https://cnodejs.org/api">API</a>
         </li>
         <li>
-          <a href="###">关于</a>
+          <a href="https://github.com/Geylnu/vue-cnode">关于</a>
         </li>
         <li v-if="isLogin" @click="loginout()" class="loginout">
           <a>退出</a>
