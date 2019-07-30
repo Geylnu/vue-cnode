@@ -46,7 +46,6 @@ export default {
 main {
   max-width: 1400px;
   min-width: 960px;
-  min-height: 100vh;
   margin: auto;
   overflow: auto;
 }
@@ -55,6 +54,7 @@ main {
   main {
     min-width: 0;
     width: 100%;
+    min-height: calc(100vh-50px)
   }
 
   .slidebar{

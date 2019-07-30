@@ -29,8 +29,8 @@
         </menu>
       </div>
       <ul :class="{active:ulActive}">
-        <li>
-          <router-link :to="{name: 'root',params:{tab:'all'}}">首页</router-link>
+        <li @click="ulActive=!ulActive">
+          <router-link :to="{name: 'root',params:{tab:'all'}}" >首页</router-link>
         </li>
         <li>
           <a href="https://cnodejs.org/getstart">新手入门</a>
