@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import api from "../api.js";
 import cTopicCell from "./c-topic-cell";
 
 export default {

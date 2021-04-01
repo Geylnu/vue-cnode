@@ -103,6 +103,8 @@ header {
 }
 
 .container {
+  box-sizing: border-box;
+  padding: 0px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;

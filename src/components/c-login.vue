@@ -85,7 +85,7 @@ export default {
     };
   },
   watch: {
-    status(newStatus, oldStatus) {
+    status(newStatus) {
       this.msg = statusMsg[newStatus];
       if (newStatus === this.statusCode.SUCCESS) {
         this.$eventBus.$emit("login",this.info);
@@ -140,7 +140,7 @@ export default {
         this.status = this.statusCode.VERIFYFAILD;
       }
     },
-    async login(tokenCorrect) {
+    async login() {
       if (
         this.status !== this.statusCode.PENDING &&
         this.status !== this.statusCode.SUCCESS

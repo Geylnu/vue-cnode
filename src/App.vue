@@ -16,8 +16,6 @@
 <script>
 import cReturnTop from "./components/c-return-top"
 import cHeader from "./components/c-header.vue";
-import cPostList from "./components/c-post-list";
-import cArtical from "./components/c-article";
 import router from "./router/main.js";
 
 export default {
@@ -26,8 +24,6 @@ export default {
   components: {
     cReturnTop,
     cHeader,
-    cPostList,
-    cArtical
   }
 };
 </script>

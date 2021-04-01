@@ -42,7 +42,7 @@ export default {
       requestAnimationFrame(animate);
 
       const coords = { x: window.scrollX, y: window.scrollY };
-      const tween = new TWEEN.Tween(coords)
+      new TWEEN.Tween(coords)
         .to({ x: 0, y: 0 }, this.time)
         .easing(TWEEN.Easing.Quadratic.Out)
         .onUpdate(() => {
